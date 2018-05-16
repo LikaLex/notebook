@@ -8,27 +8,21 @@ head
 body
   header
     .header_inner
-      = form_tag search_notes_path, method: :get, class: "navbar-form navbar-right", role: "search" do
-        p
-          = text_field_tag :search, params[:search], class: "form-control"
-          = submit_tag "Search", name: nil, class: "btn btn-default"
-
       nav
         - if user_signed_in?
           = link_to "New Note", new_note_path
           = link_to "Sign Out", destroy_user_session_path, method: :delete
+          = form_tag search_notes_path, method: :get, class: "navbar-form navbar-right", role: "search" do
+            p
+              = text_field_tag :search, params[:search], class: "form-control"
+              = submit_tag "Search", name: nil, class: "btn btn-default"
         - else
           = link_to "Log In", new_user_session_path
   p.notice= notice
   p.alert= alert
 
+
   = yield
   
 
-  .col-md-4
-    ul.list-group
-      li= link_to "All Articles", root_path, class: "list-group-item"
-      - Status.all.each do |status|
-        li= link_to status.name, notes_path(status: status.name), class: "list-group-item"
-  
-  
+
