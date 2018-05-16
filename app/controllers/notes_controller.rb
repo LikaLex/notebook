@@ -4,22 +4,16 @@ class NotesController < ApplicationController
 
 
   def search
-    if params[:search].present?
-      @note = Note.search(params[:search])
-    else
-      @note = Note.all
-    end
   end
 
   def index
-
-    if params[:status].blank?
-      @notes = Note.where(user_id: current_user)
-    else
+    @notes = Note.where(user_id: current_user)
+    if params[:status].present?
       @status_id = Status.find_by(name: params[:status]).id
-      @notes = Note.where(status_id: @status_id).order("created_at DESC").where(user_id: current_user)
+      @notes = Note.where(status_id: @status_id).order('created_at DESC')
     end
-
+    @notes = @notes.search(params[:search]) if params[:search].present?
+    @notes = @notes.order(params[:sort_field] => params[:sort_direction] || :desc) if params[:sort_field].present?
   end
 
   def show

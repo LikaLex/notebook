@@ -10,14 +10,14 @@ body
     .header_inner
       nav
         - if user_signed_in?
-          = link_to "New Note", new_note_path
-          = link_to "Sign Out", destroy_user_session_path, method: :delete
-          = form_tag search_notes_path, method: :get, class: "navbar-form navbar-right", role: "search" do
+          = link_to 'New Note', new_note_path
+          = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          = form_tag notes_path, method: :get, class: 'navbar-form navbar-right', role: 'search' do
             p
-              = text_field_tag :search, params[:search], class: "form-control"
-              = submit_tag "Search", name: nil, class: "btn btn-default"
+              = text_field_tag :search, params[:search], class: 'form-control'
+              = submit_tag 'Search', name: nil, class: 'btn btn-default'
         - else
-          = link_to "Log In", new_user_session_path
+          = link_to 'Log In', new_user_session_path
   p.notice= notice
   p.alert= alert
 
