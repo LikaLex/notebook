@@ -13,7 +13,13 @@ class NotesController < ApplicationController
 
   def index
 
-    @notes = Note.where(user_id: current_user)
+    if params[:status].blank?
+      @notes = Note.where(user_id: current_user)
+    else
+      @status_id = Status.find_by(name: params[:status]).id
+      @notes = Note.where(status_id: @status_id).where(user_id: current_user)
+    end
+
   end
 
   def show
@@ -60,6 +66,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-params.require(:note).permit(:title, :content, :status)
+params.require(:note).permit(:title, :content, :status, :status_id)
   end
 end

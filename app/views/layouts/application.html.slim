@@ -23,3 +23,12 @@ body
   p.alert= alert
 
   = yield
+  
+
+  .col-md-4
+    ul.list-group
+      li= link_to "All Articles", root_path, class: "list-group-item"
+      - Status.all.each do |status|
+        li= link_to status.name, notes_path(status: status.name), class: "list-group-item"
+  
+  
