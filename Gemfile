@@ -14,6 +14,13 @@ gem 'jquery-rails'
 gem 'searchkick', '~> 3.1'
 
 
+group :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
+  gem 'capybara', '~> 2.13'
+end
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record

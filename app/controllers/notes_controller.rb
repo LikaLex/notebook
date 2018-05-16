@@ -17,7 +17,7 @@ class NotesController < ApplicationController
       @notes = Note.where(user_id: current_user)
     else
       @status_id = Status.find_by(name: params[:status]).id
-      @notes = Note.where(status_id: @status_id).where(user_id: current_user)
+      @notes = Note.where(status_id: @status_id).order("created_at DESC").where(user_id: current_user)
     end
 
   end
