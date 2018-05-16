@@ -2,6 +2,15 @@ class NotesController < ApplicationController
   before_action :find_note, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+
+  def search
+    if params[:search].present?
+      @note = Note.search(params[:search])
+    else
+      @note = Note.all
+    end
+  end
+
   def index
 
     @notes = Note.where(user_id: current_user)
