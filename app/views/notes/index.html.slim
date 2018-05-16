@@ -1,11 +1,23 @@
 
+
 .wrapper_with_padding
   #notes.clearfix
     - unless @notes.blank?
+      table#notes_table.table.table-hover.table-striped
+        thead
+          tr
+            th Title
+            th Status
+            th.hidden
+        tbody
+           
   - @notes.each do |note|
     .note
       p.title= link_to note.title, note
     p.date= time_ago_in_words(note.created_at)
+
+
+
 
 
 
