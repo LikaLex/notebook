@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails'
 gem 'searchkick', '~> 3.1'
 gem 'csv'
+gem 'dotenv-rails'
 
 
 group :test do
