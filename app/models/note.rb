@@ -1,5 +1,5 @@
 class Note < ApplicationRecord
-  searchkick
+  searchkick highlight: [:title, :status]
   belongs_to :user
   belongs_to :status
 end
