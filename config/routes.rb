@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+
   get 'welkome/index'
 
   resources :notes do
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   root "welkome#index"
+
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
 end

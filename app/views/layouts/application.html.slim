@@ -18,6 +18,8 @@ body
               = submit_tag 'Search', name: nil, class: 'btn btn-default'
         - else
           = link_to 'Log In', new_user_session_path
+          = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path
+
   p.notice= notice
   p.alert= alert
 
