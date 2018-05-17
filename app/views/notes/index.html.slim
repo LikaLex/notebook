@@ -6,10 +6,10 @@
       table#notes_table.table.table-hover.table-striped
         thead
           tr
-            th Title
-            th Status
-            th Created at
-            th Updated at
+            th= sortable "title"
+            th= sortable  " status"
+            th= sortable  " created at"
+            th= sortable " updated at"
             th.hidden
         tbody
           - @notes.each do |note|
