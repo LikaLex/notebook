@@ -1,5 +1,6 @@
 class Note < ApplicationRecord
-  searchkick highlight: [:title, :status]
+  searchkick highlight: [:title]
   belongs_to :user
-  belongs_to :status
+  enum status: {draft: 1, ready_for_export: 2, exported: 3}
+
 end

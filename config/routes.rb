@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   get 'welkome/index'
 
   resources :notes do
-    collection do
-      get 'search'
-    end
+    get 'export', on: :collection
   end
 
   authenticated :user do
@@ -15,6 +13,4 @@ Rails.application.routes.draw do
   root "welkome#index"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
-
 end

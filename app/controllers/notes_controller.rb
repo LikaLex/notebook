@@ -4,22 +4,27 @@ class NotesController < ApplicationController
   #validates :valid_status
   helper_method :sort_column,  :sort_direction
 
-
-
-
-  def search
+  def export
+    CSV.open("tmp/file.csv", 'wb') do |csv|
+      csv << %w(Title Content Created_at Updated_at)
+      current_user.notes.ready_for_export.each do |note|
+        if note
+          csv << [note.title, note.content, note.created_at, note.updated_at]
+          note.exported!
+        end
+      end
+    end
+    send_file("tmp/file.csv")
   end
 
   def index
-
     @notes = Note.where(user_id: current_user)
-    if params[:status].present?
-      @status_id = Status.find_by(name: params[:status]).id
-      @notes = Note.where(status_id: @status_id).order('created_at DESC')
+    @notes = @notes.where(status: params[:status]) if params[:status].present?
+    if params[:search].present?
+      @notes = @notes.search(params[:search], order: {sort_column => sort_direction})
+    else
+      @notes = @notes.order("#{sort_column} #{sort_direction}")
     end
-    @notes = @notes.search(params[:search]) if params[:search].present?
-    @notes= @notes.order(sort_column + " " + sort_direction)
-    #@notes = @notes.order(params[:sort_field] => params[:sort_direction] || :desc) if params[:sort_field].present?
   end
 
   def show
@@ -76,18 +81,4 @@ class NotesController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
-
-  #def valid_status
-
-   # if note.status.id == 3
-    #  error.add()
-   # end
-
-
-  #end
-
-
-
-
 end

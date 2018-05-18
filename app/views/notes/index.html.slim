@@ -6,16 +6,16 @@
       table#notes_table.table.table-hover.table-striped
         thead
           tr
-            th= sortable "title"
-            th= sortable  " status"
-            th= sortable  " created at"
-            th= sortable " updated at"
+            th= sortable 'title'
+            th Status
+            th= sortable 'created_at'
+            th= sortable 'updated_at'
             th.hidden
         tbody
           - @notes.each do |note|
             tr
               td.title= link_to note.title, note
-              td= note.status.name
+              td= note.status
               td.date= time_ago_in_words(note.created_at)
               td.date= time_ago_in_words(note.updated_at)
 
@@ -28,8 +28,8 @@
       li= link_to "Add a new Note", new_note_path, class: "list-group-item"
       li= link_to "All Articles", root_path, class: "list-group-item"
 
-      - Status.all.each do |status|
-        li= link_to status.name, notes_path(status: status.name), class: "list-group-item"
+      - Note.statuses.each do |status_name, status_id|
+        li= link_to status_name, notes_path(status: status_id), class: "list-group-item"
 
 
 

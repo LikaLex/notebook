@@ -12,11 +12,11 @@ body
         - if user_signed_in?
           = link_to 'New Note', new_note_path
           = link_to 'Sign Out', destroy_user_session_path, method: :delete
-          = form_tag notes_path, method: :get, class: 'navbar-form navbar-right', role: 'search' do
+          = form_tag notes_path(sort: sort_column, direction: sort_direction), method: :get, class: 'navbar-form navbar-right', role: 'search' do
             p
               = text_field_tag :search, params[:search], class: 'form-control'
               = submit_tag 'Search', name: nil, class: 'btn btn-default'
-          = link_to 'Send to CSV'
+          = link_to 'Send to CSV', export_notes_path, target: '_blank'
 
         - else
           = link_to 'Log In', new_user_session_path
