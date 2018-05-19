@@ -1,12 +1,13 @@
 require 'spec_helper'
+#require '../../app/controllers/notes_controller'
 
-describe NotesController do
+RSpec.describe NotesController, :type => :controller do
   let!(:first_Note)  { Note.create(:title => 'Test Title', :content => 'Test content')}
 
   describe "GET 'index'" do
     before { get :index }
 
-    it { expect(assigns(:Notes)).to eq([first_Note]) }
+    it { expect(assigns(:Note)).to eq([first_Note]) }
     it { expect(response).to render_template('index') }
   end
 
