@@ -17,15 +17,16 @@ gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 
 
-group :test do
-  gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails'
-  gem 'capybara', '~> 2.13'
-end
-
 group :development do
   gem 'pry'
 end
+
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
