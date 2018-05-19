@@ -1,12 +1,11 @@
-require 'spec_helper'
+require "rails_helper"
 
-RSpec.describe Note, :type => :view do
-  it 'displays note details correctly' do
-    assign(:note, Note.create(name: 'Shirt', content: 'Some content'))
+RSpec.describe "notes/show" do
 
-    render
-
-    rendered.should contain('Shirt')
-    rendered.should contain('Some content')
+  it "does not render a different template" do
+    expect(view).to_not render_template("notes/show")
   end
 end
+
+
+

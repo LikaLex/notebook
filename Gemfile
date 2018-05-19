@@ -15,6 +15,7 @@ gem 'searchkick', '~> 3.1'
 gem 'csv'
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
+gem 'rails-controller-testing'
 
 
 group :development do
