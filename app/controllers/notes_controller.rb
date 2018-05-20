@@ -75,7 +75,7 @@ class NotesController < ApplicationController
   end
 
   def sort_column
-    Note.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+    Note.column_names.include?(params[:sort]) ? params[:sort] : "title"
   end
 
   def sort_direction

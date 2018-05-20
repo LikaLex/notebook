@@ -1,5 +1,5 @@
 = simple_form_for @note do |f|
-  /= f.collection_select :status/, Status.all, :id, :name, { promt: "Choose status of the note"}
+  /= f.collection_select :status, Status.all, :id, :name
   = f.input :status, collection: Note.statuses.except(:exported)
   = f.input :title
   = f.input :content
