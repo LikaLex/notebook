@@ -37,9 +37,9 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.build(note_params)
-
+    @note.status = params[:note][:status].to_i
     if @note.save
-      redirect_to @note
+      redirect_to notes_path
     else
       render 'new'
     end
@@ -53,7 +53,8 @@ class NotesController < ApplicationController
 
   def update
     if @note.update(note_params)
-      redirect_to @note
+      @note.status = params[:note][:status].to_i
+      redirect_to note_path
     else
       render 'edit'
     end
