@@ -7,7 +7,7 @@ end
 
 
 gem 'slim', '~> 3.0', '>= 3.0.9'
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise', '~> 4.7'
 gem 'simple_form', '~> 4.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails'
