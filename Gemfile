@@ -8,7 +8,7 @@ end
 
 gem 'slim', '~> 3.0', '>= 3.0.9'
 gem 'devise', '~> 4.7'
-gem 'simple_form', '~> 4.0'
+gem 'simple_form', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.4'
 gem 'jquery-rails'
 gem 'searchkick', '~> 3.1'
